@@ -45,8 +45,9 @@ $result = $conexao->query($sql);
             <a href="Funcionarios.php">Funcionarios</a>
             <a href="Quartos.php" class="active">Quartos</a>
             <a href="Clientes.php">Clientes</a>
-            <a href="pagamento.php">Pagamento</a>
             <a href="frigobar.php">Frigobar</a>
+            <a href="pagamento.php">Pagamento</a>
+
         </nav>
 
         <div class="bemVindo">
@@ -60,54 +61,38 @@ $result = $conexao->query($sql);
         </div>
     </header>
 
-    <div class="box-search1">
-        <div class="box">
-            <a href="formularioquartos.php">Cadastro</a>
-        </div>
-        <div class="search1">
 
-            <input type="search" class="form-control search-field" placeholder="Pesquisar" id="pesquisar">
+    <div class="table">
+        <table class="table-item">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Quarto</th>
+                    <th scope="col">Nome do Cliente</th>
+                    <th scope="col">Email do Cliente</th>
+                    <th scope="col">Total Preço</th> <!-- Nova coluna -->
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Inclui o arquivo de configuração para conexão com o banco de dados
+                include_once('config.php');
 
-            <button onclick="searchData()" class="btn3 btn-primary">
+                // Busca os dados da tabela de quartos
+                $query = "SELECT * FROM quartos";
+                $result = mysqli_query($conexao, $query);
 
-                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-                    <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0' />
-                </svg>
-        </div>
-        </button>
-
-
-        <div class="table">
-            <table class="table-item">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Quarto</th>
-                        <th scope="col">Nome do Cliente</th>
-                        <th scope="col">Email do Cliente</th>
-                        <th scope="col">Total Preço</th> <!-- Nova coluna -->
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Inclui o arquivo de configuração para conexão com o banco de dados
-                    include_once('config.php');
-
-                    // Busca os dados da tabela de quartos
-                    $query = "SELECT * FROM quartos";
-                    $result = mysqli_query($conexao, $query);
-
-                    // Loop para exibir os dados na tabela
-                    while ($room_data = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
-                        echo "<td>" . $room_data['idquartos'] . "</td>"; // ID do quarto
-                        echo "<td>" . $room_data['quarto'] . "</td>"; // Nome ou tipo do quarto
-                        echo "<td>" . $room_data['nome'] . "</td>"; // Nome do cliente associado
-                        echo "<td>" . $room_data['email'] . "</td>"; // Email do cliente associado
-                        echo "<th>R$ " . number_format($room_data['total_preco'], 2, ',', '.') . "</th>"; // Total preço formatado
-                        // Coluna de ações com botões estilizados
-                        echo "<td>
+                // Loop para exibir os dados na tabela
+                while ($room_data = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $room_data['idquartos'] . "</td>"; // ID do quarto
+                    echo "<td>" . $room_data['quarto'] . "</td>"; // Nome ou tipo do quarto
+                    echo "<td>" . $room_data['nome'] . "</td>"; // Nome do cliente associado
+                    echo "<td>" . $room_data['email'] . "</td>"; // Email do cliente associado
+                    echo "<th>R$ " . number_format($room_data['total_preco'], 2, ',', '.') . "</th>"; // Total preço formatado
+                    // Coluna de ações com botões estilizados
+                    echo "<td>
                         <a class='btn1 btn-sm btn-primary' href='editquarto.php?id=" . $room_data['idquartos'] . "'> 
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
                                 <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
@@ -120,12 +105,12 @@ $result = $conexao->query($sql);
                             </svg>
                         </a>
                       </td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 
 

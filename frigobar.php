@@ -96,8 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['salvar_frigobar'])) {
             <a href="Funcionarios.php">Funcionarios</a>
             <a href="Quartos.php">Quartos</a>
             <a href="Clientes.php">Clientes</a>
-            <a href="pagamento.php">Pagamento</a>
             <a href="frigobar.php" class="active">Frigobar</a>
+            <a href="pagamento.php">Pagamento</a>
+           
         </nav>
 
         <div class="bemVindo">

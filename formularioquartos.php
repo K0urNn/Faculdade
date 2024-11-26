@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="FORMULARIOS.css">
 </head>
 <body>
-    <a href="funcionarios.php" style="color: white; text-decoration: none;">Voltar</a>
+
     <div class="box">
         <form action="formularioquartos.php" method="POST">
             <fieldset>

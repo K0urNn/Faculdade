@@ -57,9 +57,9 @@ if (isset($_POST['gerar_boleto'])) {
     // Exibir os dados do boleto
     $valor_formatado = "R$ " . number_format($valor_total, 2, ',', '.');
 
-    echo "<h2>Boleto Gerado</h2>";
-    echo "<table border='1' style='width: 100%; border-collapse: collapse;'>";
-    echo "<tr><th colspan='2'>Dados do Boleto</th></tr>";
+    echo "<h2 class='titulo-boleto'>Boleto Gerado</h2>";
+    echo "<table class='tabela-boleto'>";
+    echo "<tr class='cabecalho-tabela'><th colspan='2'>Dados do Boleto</th></tr>";
     echo "<tr><td><strong>Nome do Cliente</strong></td><td>$nome_cliente</td></tr>";
     echo "<tr><td><strong>CPF do Cliente</strong></td><td>$cpf_cliente</td></tr>";
     echo "<tr><td><strong>Data de Vencimento</strong></td><td>$vencimento</td></tr>";
@@ -69,16 +69,16 @@ if (isset($_POST['gerar_boleto'])) {
     echo "<tr><td><strong>Código do Banco</strong></td><td>$codigo_banco</td></tr>";
     echo "</table>";
 
-    echo "<h3>Visualização do Boleto</h3>";
-    echo "<div style='border: 1px solid #000; padding: 20px; width: 600px; margin-top: 20px;'>";
-    echo "<h4>Banco: $codigo_banco</h4>";
+    echo "<h3 class='titulo-visualizacao'>Visualização do Boleto</h3>";
+    echo "<div class='div-boleto'>";
+    echo "<h4 class='banco'>Banco: $codigo_banco</h4>";
     echo "<p><strong>Nosso Número: </strong>$nosso_numero</p>";
     echo "<p><strong>Cliente: </strong>$nome_cliente</p>";
     echo "<p><strong>CPF: </strong>$cpf_cliente</p>";
     echo "<p><strong>Vencimento: </strong>$vencimento</p>";
-    echo "<p><strong>Valor Frigobar: </strong>  $valor_frigobar</p>";
+    echo "<p><strong>Valor Frigobar: </strong>$valor_frigobar</p>";
     echo "<p><strong>Valor Total: </strong>$valor_formatado</p>";
-    echo "<p><strong>Codigo de barras: </strong>[CODIGO DE BARRAS SIMULADO]</p>";
+    echo "<p><strong>Código de barras: </strong>[CODIGO DE BARRAS SIMULADO]</p>";
     echo "<p><strong>Instruções: </strong>Após o pagamento, aguarde confirmação.</p>";
     echo "</div>";
 }
@@ -94,7 +94,7 @@ if (isset($_POST['gerar_boleto'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerar Boleto</title>
 
-    <link rel="stylesheet" href="PAGAMENTOS.css">
+    <link rel="stylesheet" type="text/css"  href="PAGAMENTOS.css">
 
 </head>
 
@@ -109,8 +109,9 @@ if (isset($_POST['gerar_boleto'])) {
             <a href="Funcionarios.php">Funcionarios</a>
             <a href="Quartos.php">Quartos</a>
             <a href="Clientes.php">Clientes</a>
-            <a href="pagamento.php" class="active">Pagamento</a>
             <a href="frigobar.php">Frigobar</a>
+            <a href="pagamento.php" class="active">Pagamento</a>
+
         </nav>
 
         <div class="bemVindo">

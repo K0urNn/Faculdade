@@ -1,19 +1,25 @@
-<?php
+<?php 
 
 if (!empty($_GET['id'])) {
-    include_once('config.php');
+    include_once('config.php'); // Inclui o arquivo de configuração do banco de dados
 
-    $id = $_GET['id'];
+    $id = intval($_GET['id']); // Garante que o ID seja tratado como um número inteiro
 
-    $sqlSelect = "SELECT * FROM clientes where id=$id";
-
+    // Verificar se o cliente existe na tabela 'clientes'
+    $sqlSelect = "SELECT * FROM clientes WHERE id=$id";
     $result = $conexao->query($sqlSelect);
 
     if ($result->num_rows > 0) {
+        // Excluir registros relacionados na tabela 'frigobar'
+        $sqlDeleteFrigobar = "DELETE FROM frigobar WHERE id_cliente=$id";
+        $conexao->query($sqlDeleteFrigobar);
 
-        $sqlDelete = "DELETE FROM clientes WHERE id=$id";
-        $resultDelete = $conexao->query($sqlDelete);
+        // Excluir o cliente da tabela 'clientes'
+        $sqlDeleteCliente = "DELETE FROM clientes WHERE id=$id";
+        $conexao->query($sqlDeleteCliente);
     }
 }
-header('Location: clientes.php')
+
+// Redirecionar para a página 'clientes.php' após a exclusão
+header('Location: clientes.php');
 ?>

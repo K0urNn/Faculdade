@@ -224,3 +224,46 @@ form p[style*='color:green'] {
 .button-voltar a:hover {
   background-color: var(--primeira-color); 
 }
+
+/* Boleto */
+
+.titulo-boleto {
+  text-align: center;
+  color: #2C3E50;
+}
+
+.tabela-boleto {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.tabela-boleto th {
+  background-color: #2980B9;
+  color: white;
+  padding: 10px;
+}
+
+.tabela-boleto td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.titulo-visualizacao {
+  text-align: center;
+  color: #2C3E50;
+}
+
+.div-boleto {
+  border: 1px solid #2980B9;
+  padding: 20px;
+  width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.banco {
+  color: #2980B9;
+}

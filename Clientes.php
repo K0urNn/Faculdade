@@ -44,8 +44,9 @@ $result = $conexao->query($sql);
             <a href="Funcionarios.php">Funcionarios</a>
             <a href="Quartos.php">Quartos</a>
             <a href="Clientes.php" class="active">Clientes</a>
-            <a href="pagamento.php">Pagamento</a>
             <a href="frigobar.php">Frigobar</a>
+            <a href="pagamento.php">Pagamento</a>
+           
         </nav>
 
         <div class="bemVindo">
@@ -62,7 +63,10 @@ $result = $conexao->query($sql);
     <div class="box-search1">
         
         <div class="box">
-            <a href="formulariocliente.php">Cadastro</a>
+            <a href="formulariocliente.php">Cadastro cliente</a>
+        </div>
+        <div class="box">
+            <a href="formularioquartos.php">Cadastro quartos</a>
         </div>
 
 
